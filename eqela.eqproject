@@ -1,0 +1,9 @@
+
+#
+# Project configuration file for
+# EntitiesAbuan
+#
+
+projectname: EntitiesAbuan
+vendorid: com.mycompany
+mainmodule: com.mycompany.entitiesabuan
