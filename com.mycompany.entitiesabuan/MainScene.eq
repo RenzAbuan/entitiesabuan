@@ -8,7 +8,7 @@ public class MainScene : SEScene
 {
 	SESprite road;
 	SEEntity player;
-	SEPointerInfo f;
+	SEEntity monster;
     public static int px;
     public static int py;
 	int i;
@@ -22,22 +22,26 @@ public class MainScene : SEScene
 		road = add_sprite_for_image(SEImage.for_resource("mycloud"));
 		road.move(0,0);
 	    add_entity(new PlayerEntity());
-		for(i=0; i<Math.random(1,3); i++){
+		for(i=0; i<Math.random(1,5); i++){
 			add_entity(new MonsterEntity());
 		}
-		AudioClipManager.play("battle");
+		AudioClipManager.play("battle");	
 	}
 
 
 	public void on_pointer_move(SEPointerInfo pi) {
-		px = pi.get_x();
+	    px = pi.get_x();
 		py = pi.get_y();
-		if(pi.is_inside(MonsterEntity.mx, MonsterEntity.my,MonsterEntity.mx+1, MonsterEntity.my+1)) {
+		if(MonsterEntity.truth == true) {
+			switch_scene(new GameOver());
+		}
+	
+	/*	if(pi.is_inside(MonsterEntity.mx, MonsterEntity.my,MonsterEntity.mx+1, MonsterEntity.my+1)) {
 			switch_scene(new GameOver());
 			}
 		else if (px == MonsterEntity.mx &&py== MonsterEntity.my) {
 			switch_scene(new GameOver());
-		}
+		}*/
 
 
 	}

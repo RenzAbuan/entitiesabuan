@@ -9,22 +9,46 @@ public class MonsterEntity : SEEntity
 	SESprite monster;
 	public static int mx;
 	public static int my;
+    int  px1;
+    int  py1;
+    int speed;
+	public static bool truth;
 	
 	public void initialize(SEResourceCache rsc) {
 		base.initialize(rsc);
+		truth=false;
 		var w= get_scene_width(), h= get_scene_height();
 		rsc.prepare_image("mymonster","axe",  w*0.20, h*0.20);
 		monster = add_sprite_for_image(SEImage.for_resource("mymonster"));
 	//	monster.move(0,0);
-		monster.move(Math.random(0,w), Math.random(0,h));
+		 px1 = Math.random(0,w);
+         py1 = Math.random(0,h);
+		monster.move(px1,py1);
+		speed = Math.random(4,15);
 	}
 
 	public void tick(TimeVal now, double delta) {
-		mx = monster.get_x();
-	    my = monster.get_y();
-		var px = MainScene.px;
-		var py = MainScene.py;
-		monster.move( mx+(px-mx)/Math.random(20,100),my+(py-my)/Math.random(20,100) );
+   	 if(px1 < MainScene.px){
+                        px1 = px1 + Math.random(speed/-4,speed);
+                }
+                else if(px1 > MainScene.px){
+                        px1 = px1 - Math.random(speed/-4,speed);
+                }
+                
+                if(py1 < MainScene.py){
+                        py1 = py1 + Math.random(speed/-4,speed);
+                        }
+                else if(py1 > MainScene.py){
+                        py1 = py1 - Math.random(speed/-4,speed);
+                }
+
+                if(px1==MainScene.px&&py1==MainScene.py) {
+                truth = true;
+                }
+               monster.move(px1,py1);
+			
+
+	//	monster.move( mx+(px-mx)/Math.random(20,100),my+(py-my)/Math.random(20,100) );
 	}
 
 	public void cleanup() {

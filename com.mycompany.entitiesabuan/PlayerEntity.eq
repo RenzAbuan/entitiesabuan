@@ -14,7 +14,7 @@ public class PlayerEntity : SEEntity
 		rsc.prepare_image("mybird", "ft", w*0.10, h*0.10);
 		player= add_sprite_for_image(SEImage.for_resource("mybird"));
 		var wp= player.get_width(), wh = player.get_height();
-//		player.move(w*0.5-wp*0.5, h*0.5- wh*0.5);
+		player.move(w*0.5-wp*0.5, h*0.5- wh*0.5);
 	}
 
 	public void tick(TimeVal now, double delta) {
