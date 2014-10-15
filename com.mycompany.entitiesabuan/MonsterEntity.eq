@@ -19,6 +19,7 @@ public class MonsterEntity : SEEntity
 		truth=false;
 		var w= get_scene_width(), h= get_scene_height();
 		rsc.prepare_image("mymonster","axe",  w*0.20, h*0.20);
+		rsc.prepare_image("game1","gameover",get_scene_width(),get_scene_height());
 		monster = add_sprite_for_image(SEImage.for_resource("mymonster"));
 	//	monster.move(0,0);
 		 px1 = Math.random(0,w);
@@ -43,6 +44,8 @@ public class MonsterEntity : SEEntity
                 }
 
                 if(px1==MainScene.px&&py1==MainScene.py) {
+            	MainScene.road = add_sprite_for_image(SEImage.for_resource("game1"));
+                MainScene.road.move(0,0);
                 truth = true;
                 }
                monster.move(px1,py1);

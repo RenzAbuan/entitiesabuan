@@ -6,7 +6,7 @@
 
 public class MainScene : SEScene
 {
-	SESprite road;
+	public static SESprite road;
 	SEEntity player;
 	SEEntity monster;
     public static int px;
@@ -30,13 +30,11 @@ public class MainScene : SEScene
 
 
 	public void on_pointer_move(SEPointerInfo pi) {
-	    px = pi.get_x();
+				if(MonsterEntity.truth == true) {			
+					switch_scene(new GameOver());
+	}
+        px = pi.get_x();
 		py = pi.get_y();
-		if(MonsterEntity.truth == true) {
-			switch_scene(new GameOver());
-	
-		}
-
 
 	}
 
