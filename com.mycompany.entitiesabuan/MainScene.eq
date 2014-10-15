@@ -22,7 +22,7 @@ public class MainScene : SEScene
 		road = add_sprite_for_image(SEImage.for_resource("mycloud"));
 		road.move(0,0);
 	    add_entity(new PlayerEntity());
-		for(i=0; i<Math.random(1,5); i++){
+		for(i=0; i<Math.random(3,7); i++){
 			add_entity(new MonsterEntity());
 		}
 		AudioClipManager.play("battle");	
@@ -34,14 +34,8 @@ public class MainScene : SEScene
 		py = pi.get_y();
 		if(MonsterEntity.truth == true) {
 			switch_scene(new GameOver());
-		}
 	
-	/*	if(pi.is_inside(MonsterEntity.mx, MonsterEntity.my,MonsterEntity.mx+1, MonsterEntity.my+1)) {
-			switch_scene(new GameOver());
-			}
-		else if (px == MonsterEntity.mx &&py== MonsterEntity.my) {
-			switch_scene(new GameOver());
-		}*/
+		}
 
 
 	}
